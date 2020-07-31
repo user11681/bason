@@ -23,25 +23,23 @@ import org.apache.logging.log4j.Logger;
  */
 public abstract class BasonConfiguration {
     protected transient final JsonParser parser = new JsonParser();
-    protected transient final String path;
     protected transient final Gson gson;
     protected transient final File file;
     protected transient final Logger logger;
 
-    public BasonConfiguration(final String namespace, final String path) {
-        this(namespace, path, new GsonBuilder().serializeNulls().disableHtmlEscaping().setPrettyPrinting().create());
+    public BasonConfiguration(final String path) {
+        this(path, new GsonBuilder().serializeNulls().disableHtmlEscaping().setPrettyPrinting().create());
     }
 
-    public BasonConfiguration(final String namespace, final String path, final Gson gson) {
-        this(namespace, path, LogManager.getLogger(String.format("%s/%s", namespace, path.replaceFirst("\\..*$", ""))), gson);
+    public BasonConfiguration(final String path, final Gson gson) {
+        this(path, LogManager.getLogger(path.replaceFirst("\\..*$", "")), gson);
     }
 
-    public BasonConfiguration(final String namespace, final String path, final Logger logger) {
-        this(namespace, path, logger, new GsonBuilder().serializeNulls().disableHtmlEscaping().setPrettyPrinting().create());
+    public BasonConfiguration(final String path, final Logger logger) {
+        this(path, logger, new GsonBuilder().serializeNulls().disableHtmlEscaping().setPrettyPrinting().create());
     }
 
-    public BasonConfiguration(final String namespace, final String path, final Logger logger, final Gson gson) {
-        this.path = namespace;
+    public BasonConfiguration(final String path, final Logger logger, final Gson gson) {
         this.file = new File(FabricLoader.getInstance().getConfigDir().toFile(), path + ".json");
         this.logger = logger;
         this.gson = gson;
