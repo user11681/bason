@@ -13,19 +13,10 @@
     "license": "GPL-3.0",
     "icon": "assets/bason/icon.png",
     "environment": "*",
-    "entrypoints": {
-        "client": [
-            "user11681.bason.client.BasonClient"
-        ],
-        "main": [
-            "user11681.bason.Bason"
-        ]
-    },
     "mixins": [
         "bason.mixins.json"
     ],
     "depends": {
-        "fabricloader": ">=0.9.0+build.204",
-        "minecraft": "1.16.1"
+        "fabricloader": "*"
     }
 }
