@@ -43,6 +43,6 @@ repositories {
 . . .
 dependencies {
     . . .
-    implementation include("com.github.user11681:bason:1.16-SNAPSHOT")
+    modImplementation include("com.github.user11681:bason:1.16-SNAPSHOT")
 }
 ```
